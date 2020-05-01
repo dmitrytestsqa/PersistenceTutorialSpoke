@@ -1,0 +1,11 @@
+<myMovieLibrary id="1">
+  <name></name>
+  <movies id="2">
+    <movie id="3">
+      <title>The Shawshank Redemption</title>
+      <genre>drama</genre>
+      <director>unknown director</director>
+    </movie>
+  </movies>
+  <people id="4"/>
+</myMovieLibrary>
