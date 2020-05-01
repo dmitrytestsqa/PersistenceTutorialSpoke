@@ -34,10 +34,10 @@ class SpockDocumentationCompanion extends Specification{
  */
 	@Shared mml
 
-//Fixture Method that is run once at the top of the suite before any of the feature methods are run.
-	def setupSpec() {
-		mml = MyMovieUtilities.getMyMovieLibraryFromXMLFile("cnxmovielibrary.xml")
-	}
+////Fixture Method that is run once at the top of the suite before any of the feature methods are run.
+//	def setupSpec() {
+//		mml = MyMovieUtilities.getMyMovieLibraryFromXMLFile("cnxmovielibrary.xml")
+//	}
 
 
 //Implicit Helper Method that is run before each feature method (multiple times) so if you change mml in one test it would not affect the following tests.
@@ -122,12 +122,12 @@ class SpockDocumentationCompanion extends Specification{
 			mml.getMovies().size() > 1
 
 		when: "New library is set up with 1 movie in it"
-			def mml2 = new MyMovieLibrary("Test Drive Library")
+			def mml = new MyMovieLibrary()
 			def m1 = new Movie("The Shawshank Redemption","drama")
-			mml2.addMovie(m1)
+			mml.addMovie(m1)
 
 		and: "I replace what was in default library with a new library"
-			MyMovieUtilities.saveMyMovieLibraryToXMLFile("testmylibrarytwo.xml", mml2)
+			MyMovieUtilities.saveMyMovieLibraryToXMLFile("testmylibrarytwo.xml", mml)
 			mml = MyMovieUtilities.getMyMovieLibraryFromXMLFile("testmylibrarytwo.xml")
 
 		then: "There is one movie in the library insted of the many ones that were there"
