@@ -43,7 +43,7 @@ public class MyMovieUtilitiesTest {
 		
 		File testFile = new File("testsavetostring.txt");
 		testFile.delete();
-		assertFalse("File shoul not exist", testFile.exists());
+		assertFalse("File should not exist", testFile.exists());
 		
 		assertTrue("File should have been saved", MyUtilities.saveStringToFile("testsavestring.txt", saveString));
 		

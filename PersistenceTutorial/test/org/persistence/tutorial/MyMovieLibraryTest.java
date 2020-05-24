@@ -120,10 +120,10 @@ public class MyMovieLibraryTest extends TestCase {
 		setup();
 		addItems();
 	
-		assertTrue("Book did not check out correctly", movLib.checkOut(mov1, pers1));
+		assertTrue("Movie did not check out correctly", movLib.checkOut(mov1, pers1));
 		assertEquals("Anna", movLib.getMovies().get(0).getPerson().getName());
 		
-		assertTrue("Book did not check out correctly", movLib.checkOut(mov2, pers2));
+		assertTrue("Movie did not check out correctly", movLib.checkOut(mov2, pers2));
 		assertEquals("Den", movLib.getPeople().get(1).getName());
 		assertEquals("Inception", movLib.getTitle(mov2));
 		assertEquals("Action", movLib.getGenre(mov2));
@@ -138,7 +138,7 @@ public class MyMovieLibraryTest extends TestCase {
 		addItems();
 		movLib.checkOut(mov1, pers1);
 
-		assertFalse("Book was alread checked out", movLib.checkOut(mov1, pers1));
+		assertFalse("Movie was alread checked out", movLib.checkOut(mov1, pers1));
 	}
 
 	public void testCheckInMovie(){
@@ -146,7 +146,7 @@ public class MyMovieLibraryTest extends TestCase {
 		addItems();
 		movLib.checkOut(mov1, pers1);
 		
-		assertTrue("Book check in failed", movLib.checkIn(mov1));
+		assertTrue("Movie check in failed", movLib.checkIn(mov1));
 	}
 
 	public void testMovieShouldNotBeCheckedInTwice(){
@@ -154,23 +154,23 @@ public class MyMovieLibraryTest extends TestCase {
 		addItems();
 		movLib.checkOut(mov1, pers1);
 		movLib.checkIn(mov1);
-		assertFalse("Book was already checked in", movLib.checkIn(mov1));
+		assertFalse("Movie was already checked in", movLib.checkIn(mov1));
 	}
 
 	public void testMovieShouldNotBeChekedInIfItWasNeverCheckedOut(){
 		setup();
 		addItems();
 		
-		assertFalse("Book was never checked out", movLib.checkIn(mov2));
+		assertFalse("Movie was never checked out", movLib.checkIn(mov2));
 	}
 
 	public void testPersonShouldNotExceedMaximumMoviesLimit(){
 		setup();
 		addItems();
-		pers1.setMaximumBooks(1);
+		pers1.setMaximumMovies(1);
 		movLib.checkOut(mov1, pers1);
 		
-		assertFalse("Second book should not have checked out", movLib.checkOut(mov2, pers1));
+		assertFalse("Second movie should not have checked out", movLib.checkOut(mov2, pers1));
 	}
 
 	public void testGetMoviesForPerson() {
@@ -179,12 +179,12 @@ public class MyMovieLibraryTest extends TestCase {
 		assertEquals(0, movLib.getMoviesForPerson(pers1).size());
 		
 		movLib.checkOut(mov1, pers1);
-		ArrayList<Movie> testBooks = movLib.getMoviesForPerson(pers1);
-		assertEquals(1, testBooks.size());
-		assertEquals(0, testBooks.indexOf(mov1));
+		ArrayList<Movie> testMovies = movLib.getMoviesForPerson(pers1);
+		assertEquals(1, testMovies.size());
+		assertEquals(0, testMovies.indexOf(mov1));
 		
 		movLib.checkOut(mov1, pers1);
-		testBooks = movLib.getMoviesForPerson(pers1);
+		testMovies = movLib.getMoviesForPerson(pers1);
 	}
 
 	public void testGetAvailableMovies() {
